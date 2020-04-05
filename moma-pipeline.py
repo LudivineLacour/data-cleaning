@@ -147,3 +147,17 @@ def create_viz(df):
 def save_viz(viz):
     fig=viz.get_figure()
     fig.savefig("/Users/ludivinelacour/Documents/IRONHACK/data-cleaning/output/Repartition of art work by decade.png")
+
+if __name__=='__main__':
+    data=acquisition()
+    droped_col=drop_useless(data)
+    removed_dup=remove_duplicates(droped_col)
+    cleaned_txt=text_cleaning(removed_dup)
+    cleaned_date=date_cleaning(cleaned_txt)
+    filled_missing_date=guess_date_value(cleaned_date)
+    final=create_bins(filled_missing_date)
+    viz=create_viz(final)
+    save_viz(viz)
+    
+    
+    
