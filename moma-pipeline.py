@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def acquisition():
-    df=pd.read_csv('data/museum_modern_art.csv',sep=',')
+    df=pd.read_csv('/Users/ludivinelacour/Documents/IRONHACK/data-cleaning/data/museum_modern_art.csv',sep=',')
     df=df.rename(columns={'Unnamed: 0':'Id'})
     
     return df
@@ -75,10 +75,8 @@ def date_cleaning(df):
     
     return df
 
-def getmean(x):
+def getmean(x,mean_date):
     # x is a string
-    global mean_date
-    
     if x in mean_date.index:
         return mean_date.loc[x]
     return
@@ -113,7 +111,7 @@ def guess_date_value(df):
     mean_date=round(df_bis.groupby('ConstituentID')['Date'].agg('mean'))
     
     # Use of the function to return the mean of the constituentID
-    df.Date=df.Date.fillna(df['ConstituentID'].apply(getmean))
+    df.Date=df.Date.fillna(df['ConstituentID'].apply(getmean,args=(mean_date,)))
     
     return df
 
@@ -137,13 +135,15 @@ def create_bins(df):
 def create_viz(df):
     
     viz = pd.DataFrame(df.DateRange.value_counts()).reset_index()
-    viz.columns=['DateRange','Count]
+    viz.columns=['DateRange','Count']
     
     sns.set()
     fig,ax=plt.subplots(figsize=(20,8))
     barchart=sns.barplot(data=viz,  x='DateRange',y='Count')
+    plt.title("Repartition of art work by decade")
     
     return barchart
 
 def save_viz(viz):
-    return
+    fig=viz.get_figure()
+    fig.savefig("/Users/ludivinelacour/Documents/IRONHACK/data-cleaning/output/Repartition of art work by decade.png")
