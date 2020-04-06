@@ -12,26 +12,49 @@ I am working at the MoMa and I would like to create a new temporary exhibition o
 
 ## Process
 
-To reach the final output I need:
+**To reach the final output I need:**
 * An accurate date of creation for each art work
 * Minimumal accurate columns and data if further information are needed
 * A new column Date Range to store the art work in bins by decade
 
-![moma data-pipeline process]()
+**Steps used in the data pipeline:**
+
+![moma data-pipeline process](image/data-pipeline-moma.png)
+
 
 **Tools and way of working:** I first did data exploration in jupyter notebook in order to test functions and pandas concepts. Then I created functions for each step in a python file. 
 
 ## Python concepts used in the pipeline
 
+Libraries used:
+* pandas
+* numpy
+* regex
+* matplot.lib
+* searborn
+
+Concepts used:
+* drop_duplicates() and drop() functions
+* regex search to catch date values and clean it
+* apply()
+* groupby() & .agg()
+* value_counts()
+* .loc[] and dealing with index and columns of dataFrames
+
 ## Results
 
-By executing the python file moma-pipeline.py you will generate a .png visualization answering the question asked in the Problem definition part.
+By executing the python file `moma-pipeline.py` you will generate a `.png` visualization answering the question asked in the Problem definition part.
 
-![moma data-pipeline output](output/)
+![moma data-pipeline output](output/Repartition of art work by decade.png)
 
 ## Obstacles
 
 * Went too far on my problem definition for the project. I needed to review it a little bit. 
+* Needed to deal with data types depending on the function used (regex match or calculating mean of date) and NaN values where causing a lot of data type errors.
+* Complicated the project by replacing the missing value by the mean of each Artist.
 
 ## Lesson learned
  
+* Numpy is needed to deal with NaN values
+* We can pass several arguments in the function when using .apply()
+* Create copy of the dataframe for each new function applied when I was working on jupyter notebook to make the exploration easier.
