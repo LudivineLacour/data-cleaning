@@ -13,12 +13,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def acquisition():
+    
     df=pd.read_csv('/Users/ludivinelacour/Documents/IRONHACK/data-cleaning/data/museum_modern_art.csv',sep=',')
     df=df.rename(columns={'Unnamed: 0':'Id'})
     
     return df
 
+
 def drop_useless(df):
+    
     null_col=df.isna().sum()
     null_col_percent=round(null_col[null_col>0]/df.shape[0]*100,2)
     
@@ -28,12 +31,16 @@ def drop_useless(df):
     
     return droped
 
+
 def remove_duplicates(df):
+    
     unique_rows=df.iloc[:,:].drop_duplicates()
     
     return unique_rows
 
+
 def text_cleaning(df):
+    
     parenthesis_col=['ArtistBio','Nationality','BeginDate','EndDate','Gender','Date']
     
     for col in parenthesis_col:
@@ -41,7 +48,9 @@ def text_cleaning(df):
         
     return df
 
+
 def uniform_date(date):
+    
     if re.search('[0-9]{4}$', date):
         return date[-4:]
     elif re.search('^[0-9]{4}', date):
@@ -59,8 +68,10 @@ def uniform_date(date):
         return date[0]+str('00')
     else:
         return date
+    
 
 def date_cleaning(df):
+    
     # Convert in string type to work with regex
     df.Date=df.Date.astype(str)
     
@@ -75,13 +86,17 @@ def date_cleaning(df):
     
     return df
 
+
 def getmean(x,mean_date):
+    
     # x is a string
     if x in mean_date.index:
         return mean_date.loc[x]
     return
 
+
 def guess_date_value(df):
+    
     # Drop row with unknown artist and unknown date
     drop_row=df[(df.ConstituentID.isna())&(df.Date.isna())].index
     df.drop(drop_row,axis=0,inplace=True)
@@ -115,7 +130,9 @@ def guess_date_value(df):
     
     return df
 
+
 def create_bins(df):
+    
     # Convert all values as int to work on bins
     df.Date=df.Date.astype(int)
     
@@ -132,6 +149,7 @@ def create_bins(df):
     
     return df
 
+
 def create_viz(df):
     
     viz = pd.DataFrame(df.DateRange.value_counts()).reset_index()
@@ -144,9 +162,12 @@ def create_viz(df):
     
     return barchart
 
+
 def save_viz(viz):
+    
     fig=viz.get_figure()
     fig.savefig("/Users/ludivinelacour/Documents/IRONHACK/data-cleaning/output/repartition-of-art-work-by-decade.png")
+
 
 if __name__=='__main__':
     data=acquisition()
