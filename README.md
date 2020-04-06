@@ -34,12 +34,14 @@ Libraries used:
 * searborn
 
 Concepts used:
-* drop_duplicates() and drop() functions
-* regex search to catch date values and clean it
-* apply()
-* groupby() & .agg()
-* value_counts()
-* .loc[] and dealing with index and columns of dataFrames
+* `drop_duplicates()` and `drop()` functions to get off useless columns and rows
+* regex `search()` to catch date values and clean it
+* `apply()` to apply function to dataFrame
+* `groupby()` & `agg()`
+* `nunique()`, `value_counts()` and `isna()` to deal with value types
+* `loc[]` and dealing with index and columns of dataFrames
+* `fillna()` to fill the NaN value with the guessed ones
+* pandas `.cut()` functions to create bins
 
 ## Results
 
@@ -51,10 +53,10 @@ By executing the python file `moma-pipeline.py` you will generate a `.png` visua
 
 * Went too far on my problem definition for the project. I needed to review it a little bit. 
 * Needed to deal with data types depending on the function used (regex match or calculating mean of date) and NaN values where causing a lot of data type errors.
-* Complicated the project by replacing the missing value by the mean of each Artist.
+* Complicated the project by replacing the missing value by the mean of each Artist because I needed to match values between two different dataFrames.
 
 ## Lesson learned
  
-* Numpy is needed to deal with NaN values
-* We can pass several arguments in the function when using .apply()
-* Create copy of the dataframe for each new function applied when I was working on jupyter notebook to make the exploration easier.
+* Numpy is needed to deal with `NaN` values
+* We can pass several arguments in the function when using `apply()`
+* Create copy of the dataframe for each new function applied when I was working on jupyter notebook to make the exploration easier
