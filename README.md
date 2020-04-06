@@ -35,7 +35,7 @@ Libraries used:
 
 Concepts used:
 * `drop_duplicates()` and `drop()` functions to get off useless columns and rows
-* regex `search()` to catch date values and clean it
+* regex `search()` to catch date value and clean it
 * `apply()` to apply function to dataFrame
 * `groupby()` & `agg()`
 * `nunique()`, `value_counts()` and `isna()` to deal with value types
