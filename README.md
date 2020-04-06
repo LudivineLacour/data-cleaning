@@ -47,7 +47,7 @@ Concepts used:
 
 By executing the python file `moma-pipeline.py` you will generate a `.png` visualization answering the question asked in the Problem definition part.
 
-![moma data-pipeline output](output/Repartition of art work by decade.png)
+![moma data-pipeline output](output/repartition-of-art-work-by-decade.png)
 
 ## Obstacles
 
