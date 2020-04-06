@@ -146,7 +146,7 @@ def create_viz(df):
 
 def save_viz(viz):
     fig=viz.get_figure()
-    fig.savefig("/Users/ludivinelacour/Documents/IRONHACK/data-cleaning/output/Repartition of art work by decade.png")
+    fig.savefig("/Users/ludivinelacour/Documents/IRONHACK/data-cleaning/output/repartition-of-art-work-by-decade.png")
 
 if __name__=='__main__':
     data=acquisition()
