@@ -30,7 +30,7 @@ Libraries used:
 * pandas
 * numpy
 * regex
-* matplot.lib
+* matplotlib
 * searborn
 
 Concepts used:
